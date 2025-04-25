@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StarShop ✨</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>🌟 StarShop</h1>
+    <nav>
+      <a href="/profile">Profile</a>
+      <a href="/cart">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <main>
+    {% for item in items %}
+      <div class="item-card">
+        <img src="{{ item['image'] }}" alt="{{ item['name'] }}">
+        <h2>{{ item['name'] }}</h2>
+        <p>${{ item['price'] }}</p>
+        <a href="/add_to_cart/{{ item['id'] }}">Add to Cart</a>
+      </div>
+    {% endfor %}
+  </main>
+</body>
+</html>

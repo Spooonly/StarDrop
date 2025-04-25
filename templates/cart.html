@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart 🛒</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Your Cart</h1>
+    <nav>
+      <a href="/">Back to Shop</a>
+      <a href="/profile">Profile</a>
+    </nav>
+  </header>
+
+  <main>
+    {% if cart %}
+      <ul>
+        {% for item in cart %}
+          <li>{{ item['name'] }} - ${{ item['price'] }}</li>
+        {% endfor %}
+      </ul>
+      <a href="/purchase">Buy Now</a>
+    {% else %}
+      <p>Your cart is empty 🥺</p>
+    {% endif %}
+  </main>
+</body>
+</html>
